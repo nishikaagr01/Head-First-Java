@@ -18,9 +18,15 @@ public class GuessGame {
        boolean p3isRight = false;
        int targetNumber = (int) (Math.random() * 10);
        System.out.println("I'm thinking of a number between 0 and 9...");
-       while(true) {
+
+        int maxround = 0;
+       while(maxround <=5) {
+
+        /* this loop will run until atleast one person guessed the 
+        targetNumber or number of rounds is less than 5. */
            System.out.println("Number to guess is " + targetNumber);
            
+           maxround ++;
            p1.guess();
            p2.guess();
            p3.guess();
@@ -42,17 +48,22 @@ public class GuessGame {
                p3isRight = true;
            }
            
+           
            if (p1isRight || p2isRight || p3isRight)
            {
+            // atleast one player guessed the target Number
                System.out.println("We have a winner!");
                System.out.println("Player one got it right? " + p1isRight);
                System.out.println("Player two got it right? " + p2isRight);
                System.out.println("Player three got it right? " + p3isRight);
                System.out.println("Game is over");
+               System.out.println("The trial number is "+ maxround);
                break;
            }
            else
            {
+
+            // target Number not guessed by anyone.
                System.out.println("Players will have to try again.");
            }
        }
